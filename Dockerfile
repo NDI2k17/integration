@@ -1,7 +1,7 @@
 FROM python:3
 
 ENV api_url http://ndi.eliott.tech
-ENV slack_token
+ENV slack_token CHANGEME
 ENV name westebot
 
 WORKDIR /usr/src/app
