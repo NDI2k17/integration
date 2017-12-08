@@ -1,11 +1,10 @@
 from slackclient import SlackClient
 import requests, json
 
-BOT_NAME = 'bobot'
+BOT_NAME = 'westebot'
 BOT_TOKEN = 'xoxb-283548997155-U0hxkV8BdvQCRslWpdaiz4jy'
 
 slack_client = SlackClient(BOT_TOKEN)
-
 
 if __name__ == "__main__":
     api_call = slack_client.api_call("users.list")
