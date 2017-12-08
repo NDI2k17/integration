@@ -1,6 +1,6 @@
 FROM python:3
 
-ENV api_url http://ndi.eliott.tech
+ENV api_url http://ndi.eliott.tech/api/answer/
 ENV slack_token CHANGEME
 ENV name westebot
 

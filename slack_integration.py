@@ -40,12 +40,10 @@ if __name__ == "__main__":
                             if 'user' in message:
                                 print(message)
                                 question = message['text']
-                                answer = requests.post(
+                                answer = json.loads(requests.post(
                                     API_URL,
                                     data = dict(question=question)
-                                ).text
-                                print(answer)
-                                answer = json.loads(answer)['answer']
+                                ).text)['answer']
                                 slack_client.api_call(
                                     "chat.postMessage",
                                     channel="#general",
