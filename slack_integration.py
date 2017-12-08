@@ -1,8 +1,17 @@
 from slackclient import SlackClient
 import requests, json
 
-BOT_NAME = 'westebot'
-BOT_TOKEN = 'xoxb-283548997155-U0hxkV8BdvQCRslWpdaiz4jy'
+import argparse
+
+parser = argparse.ArgumentParser(description='Launch integration')
+parser.add_argument('--name', default='westebot', help='The name of our bot')
+parser.add_argument('--token', help='Slack API token', required=True)
+parser.add_argument('--url', help='backend url', default='http://ndi.eliott.tech/api/answer/')
+args = parser.parse_args()
+
+BOT_NAME  = args.name
+BOT_TOKEN = args.token
+API_URL   = args.url
 
 slack_client = SlackClient(BOT_TOKEN)
 
@@ -32,7 +41,7 @@ if __name__ == "__main__":
                                 print(message)
                                 question = message['text']
                                 answer = json.loads(requests.post(
-                                    'http://ndi.eliott.tech/api/answer/',
+                                    API_URL,
                                     data = dict(question=question)
                                 ).text)['answer']
                                 slack_client.api_call(
